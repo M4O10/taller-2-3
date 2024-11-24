@@ -1,0 +1,51 @@
+class Node:
+    def __init__(self, data):
+        self.left = None
+        self.right = None
+        self.data = data
+
+    def insert(self, data):
+        if self.data:
+            if data < self.data:
+                if self.left is None:
+                    self.left = Node(data)
+                else:
+                    self.left.insert(data)
+            elif data > self.data:
+                if self.right is None:
+                    self.right = Node(data)
+                else:
+                    self.right.insert(data)
+        else:
+            self.data = data
+
+    def PrintTree(self):
+        if self.left:
+            self.left.PrintTree()
+        print(self.data)
+        if self.right:
+            self.right.PrintTree()
+
+# Función para crear el árbol
+def create_tree(data):
+    root = Node(data[0])
+    for i in range(1, len(data)):
+        root.insert(data[i])
+    return root
+
+# Ejemplos
+# a)
+tree_a = create_tree([15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9])
+tree_a.PrintTree()
+
+# b)
+tree_b = create_tree([25, 15, 50, 10, 22, 35, 70, 4, 12, 18, 24, 31, 44, 66, 90])
+tree_b.PrintTree()
+
+# c)
+tree_c = create_tree([30, 20, 40, 10, 25, 35, 50])
+tree_c.PrintTree()
+
+# d)
+tree_d = create_tree([27, 14, 35, 10, 19, 31, 42, 9, 12, 18, 20, 30, 33, 38, 45])
+tree_d.PrintTree()
